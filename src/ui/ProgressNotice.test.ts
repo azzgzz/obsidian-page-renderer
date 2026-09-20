@@ -70,23 +70,23 @@ describe("ProgressNotice", () => {
 	it("shows notice on start with title", () => {
 		const p = new ProgressNotice("Exporting: test");
 		p.start(10);
-		expect(lastNotice().noticeEl.querySelector(".de-progress-title")?.textContent).toBe("Exporting: test");
+		expect(lastNotice().noticeEl.querySelector(".pr-progress-title")?.textContent).toBe("Exporting: test");
 	});
 
 	it("renders progress bar elements", () => {
 		const p = new ProgressNotice("Test");
 		p.start(5);
 		const el = lastNotice().noticeEl;
-		expect(el.querySelector(".de-progress-bar")).toBeTruthy();
-		expect(el.querySelector(".de-progress-fill")).toBeTruthy();
-		expect(el.querySelector(".de-progress-cancel")).toBeTruthy();
+		expect(el.querySelector(".pr-progress-bar")).toBeTruthy();
+		expect(el.querySelector(".pr-progress-fill")).toBeTruthy();
+		expect(el.querySelector(".pr-progress-cancel")).toBeTruthy();
 	});
 
 	it("updates fill width on setProgress", () => {
 		const p = new ProgressNotice("Test");
 		p.start(10);
 		p.setProgress(5, 10);
-		const fill = lastNotice().noticeEl.querySelector(".de-progress-fill") as HTMLElement;
+		const fill = lastNotice().noticeEl.querySelector(".pr-progress-fill") as HTMLElement;
 		expect(fill.style.width).toBe("50%");
 	});
 
@@ -94,7 +94,7 @@ describe("ProgressNotice", () => {
 		const p = new ProgressNotice("Test");
 		p.start(5);
 		p.setPhase("Rendering output");
-		expect(lastNotice().noticeEl.querySelector(".de-progress-phase span")?.textContent).toBe("Rendering output");
+		expect(lastNotice().noticeEl.querySelector(".pr-progress-phase span")?.textContent).toBe("Rendering output");
 	});
 
 	it("calls onCancel when cancel button clicked", () => {
@@ -102,7 +102,7 @@ describe("ProgressNotice", () => {
 		p.start(5);
 		const spy = vi.fn();
 		p.onCancel = spy;
-		(lastNotice().noticeEl.querySelector(".de-progress-cancel") as HTMLButtonElement).click();
+		(lastNotice().noticeEl.querySelector(".pr-progress-cancel") as HTMLButtonElement).click();
 		expect(spy).toHaveBeenCalledOnce();
 	});
 
@@ -110,7 +110,7 @@ describe("ProgressNotice", () => {
 		const p = new ProgressNotice("Test");
 		p.start(5);
 		p.onCancel = vi.fn();
-		const btn = lastNotice().noticeEl.querySelector(".de-progress-cancel") as HTMLButtonElement;
+		const btn = lastNotice().noticeEl.querySelector(".pr-progress-cancel") as HTMLButtonElement;
 		btn.click();
 		expect(btn.disabled).toBe(true);
 		expect(btn.textContent).toBe("Cancelling...");
@@ -139,7 +139,7 @@ describe("ProgressNotice", () => {
 		p.start(5);
 		p.finish("Export complete: out");
 
-		expect(notify).toHaveBeenCalledWith("Document Exporter", {
+		expect(notify).toHaveBeenCalledWith("Page Renderer", {
 			body: "Export complete: out",
 		});
 	});
@@ -169,7 +169,7 @@ describe("ProgressNotice", () => {
 		p.finish("Export complete: out");
 
 		expect(notify).toHaveBeenCalledWith({
-			title: "Document Exporter",
+			title: "Page Renderer",
 			body: "Export complete: out",
 		});
 	});
@@ -179,14 +179,14 @@ describe("ProgressNotice", () => {
 		p.start(4);
 		p.increment();
 		p.increment();
-		expect((lastNotice().noticeEl.querySelector(".de-progress-fill") as HTMLElement).style.width).toBe("50%");
+		expect((lastNotice().noticeEl.querySelector(".pr-progress-fill") as HTMLElement).style.width).toBe("50%");
 	});
 
 	it("updates title dynamically", () => {
 		const p = new ProgressNotice("Old");
 		p.start(5);
 		p.setTitle("New title");
-		expect(lastNotice().noticeEl.querySelector(".de-progress-title")?.textContent).toBe("New title");
+		expect(lastNotice().noticeEl.querySelector(".pr-progress-title")?.textContent).toBe("New title");
 	});
 });
 

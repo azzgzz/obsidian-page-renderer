@@ -1,11 +1,11 @@
 import { Notice } from "obsidian";
 
-const PROGRESS_BAR_CLASS = "de-progress-bar";
-const PROGRESS_FILL_CLASS = "de-progress-fill";
-const PROGRESS_PCT_CLASS = "de-progress-pct";
-const PROGRESS_TITLE_CLASS = "de-progress-title";
-const PROGRESS_PHASE_CLASS = "de-progress-phase";
-const PROGRESS_CANCEL_CLASS = "de-progress-cancel";
+const PROGRESS_BAR_CLASS = "pr-progress-bar";
+const PROGRESS_FILL_CLASS = "pr-progress-fill";
+const PROGRESS_PCT_CLASS = "pr-progress-pct";
+const PROGRESS_TITLE_CLASS = "pr-progress-title";
+const PROGRESS_PHASE_CLASS = "pr-progress-phase";
+const PROGRESS_CANCEL_CLASS = "pr-progress-cancel";
 
 const WARNING_SHOWN_LIMIT = 2;
 const WARNING_MAX_LENGTH = 48;
@@ -94,7 +94,7 @@ export class ProgressNotice {
 	private notifyViaWebNotification(message: string): boolean {
 		const notifier = typeof window !== "undefined" ? window.Notification : undefined;
 		if (!notifier || notifier.permission !== "granted") return false;
-		new notifier("Document Exporter", { body: message });
+		new notifier("Page Renderer", { body: message });
 		return true;
 	}
 
@@ -113,7 +113,7 @@ export class ProgressNotice {
 		if (typeof NotificationCtor !== "function") return;
 
 		const notification = new (NotificationCtor as new (options: { title: string; body: string }) => { show?: () => void })({
-			title: "Document Exporter",
+			title: "Page Renderer",
 			body: message,
 		});
 		notification.show?.();
@@ -126,9 +126,9 @@ export class ProgressNotice {
 		this.notice = new Notice("", 0);
 		const noticeEl = (this.notice as unknown as { noticeEl: HTMLElement }).noticeEl;
 		noticeEl.empty();
-		noticeEl.classList.add("de-progress-notice");
+		noticeEl.classList.add("pr-progress-notice");
 
-		const content = noticeEl.createDiv({ cls: "de-progress-content" });
+		const content = noticeEl.createDiv({ cls: "pr-progress-content" });
 
 		this.titleEl = content.createDiv({ cls: PROGRESS_TITLE_CLASS, text: this.title });
 

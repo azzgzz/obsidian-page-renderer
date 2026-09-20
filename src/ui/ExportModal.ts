@@ -252,7 +252,7 @@ export class ExportModal extends Modal {
 							onChange(folder);
 						}
 					} catch (err) {
-						console.error("Document Exporter: failed to open folder dialog", err);
+						console.error("Page Renderer: failed to open folder dialog", err);
 					}
 				})();
 			});

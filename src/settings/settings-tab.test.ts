@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { DocumentExporterSettingTab } from "@/settings/settings-tab";
+import { PageRendererSettingTab } from "@/settings/settings-tab";
 import { DEFAULT_SETTINGS, ExportSettings } from "@/types";
 
 // The real debounce is timer based; capture the pending save so tests can fire it.
@@ -19,10 +19,10 @@ function makePlugin(settings: ExportSettings = { ...DEFAULT_SETTINGS }) {
 }
 
 function makeTab(plugin = makePlugin()) {
-	return new DocumentExporterSettingTab({} as never, plugin as never);
+	return new PageRendererSettingTab({} as never, plugin as never);
 }
 
-describe("DocumentExporterSettingTab#getSettingDefinitions", () => {
+describe("PageRendererSettingTab#getSettingDefinitions", () => {
 	it("declares the output folder as a text control", () => {
 		const defs = makeTab().getSettingDefinitions();
 		const first = defs[0] as {
@@ -67,7 +67,7 @@ describe("DocumentExporterSettingTab#getSettingDefinitions", () => {
 	});
 });
 
-describe("DocumentExporterSettingTab control value bridge", () => {
+describe("PageRendererSettingTab control value bridge", () => {
 
 	it("reads values from plugin settings", () => {
 		const plugin = makePlugin({ ...DEFAULT_SETTINGS, overwriteExisting: true });

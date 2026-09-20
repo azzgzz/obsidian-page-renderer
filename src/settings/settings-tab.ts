@@ -1,7 +1,7 @@
 import { PluginSettingTab, App, Setting, debounce } from "obsidian";
 import type { SettingDefinition, SettingDefinitionItem } from "obsidian";
 import { DEFAULT_SETTINGS, ExportSettings } from "@/types";
-import type DocumentExporterPlugin from "@/main";
+import type PageRendererPlugin from "@/main";
 
 type SettingSpec = {
 	key: keyof ExportSettings;
@@ -69,15 +69,15 @@ const SETTINGS: SettingSpec[] = [
 
 const TEXT_SAVE_DELAY_MS = 500;
 
-export class DocumentExporterSettingTab extends PluginSettingTab {
-	plugin: DocumentExporterPlugin;
+export class PageRendererSettingTab extends PluginSettingTab {
+	plugin: PageRendererPlugin;
 
 	// A text field would otherwise write data.json on every keystroke.
 	private saveSoon = debounce(() => {
 		void this.plugin.saveSettings();
 	}, TEXT_SAVE_DELAY_MS, true);
 
-	constructor(app: App, plugin: DocumentExporterPlugin) {
+	constructor(app: App, plugin: PageRendererPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

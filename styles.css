@@ -73,16 +73,16 @@
 
 /* Progress Notice */
 
-.notice.de-progress-notice {
+.notice.pr-progress-notice {
 	padding: 12px 16px;
 }
 
-.de-progress-content {
+.pr-progress-content {
 	width: 280px;
 	overflow: hidden;
 }
 
-.de-progress-title {
+.pr-progress-title {
 	font-weight: 600;
 	margin-bottom: 8px;
 	font-size: 13px;
@@ -91,7 +91,7 @@
 	text-overflow: ellipsis;
 }
 
-.de-progress-bar {
+.pr-progress-bar {
 	position: relative;
 	height: 6px;
 	background-color: var(--background-modifier-border);
@@ -100,7 +100,7 @@
 	margin-bottom: 6px;
 }
 
-.de-progress-fill {
+.pr-progress-fill {
 	height: 100%;
 	background-color: var(--interactive-accent);
 	border-radius: 3px;
@@ -108,7 +108,7 @@
 	transition: width 0.15s ease;
 }
 
-.de-progress-pct {
+.pr-progress-pct {
 	position: absolute;
 	right: 0;
 	top: -1px;
@@ -118,7 +118,7 @@
 	display: none;
 }
 
-.de-progress-phase {
+.pr-progress-phase {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -126,7 +126,7 @@
 	color: var(--text-muted);
 }
 
-.de-progress-phase span {
+.pr-progress-phase span {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -135,7 +135,7 @@
 	margin-right: 8px;
 }
 
-.de-progress-cancel {
+.pr-progress-cancel {
 	flex-shrink: 0;
 	font-size: 11px;
 	padding: 2px 8px;
@@ -147,11 +147,11 @@
 	line-height: 1;
 }
 
-.de-progress-cancel:hover {
+.pr-progress-cancel:hover {
 	background: var(--background-modifier-hover);
 }
 
-.de-progress-cancel:disabled {
+.pr-progress-cancel:disabled {
 	opacity: 0.5;
 	cursor: not-allowed;
 }

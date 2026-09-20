@@ -2,7 +2,7 @@ import { Plugin, TFile, TFolder, Menu, MenuItem } from "obsidian";
 import type { CliFlags, CliHandler } from "obsidian";
 import { ExportSettings } from "@/types";
 import { loadSettings, saveSettings } from "@/settings/settings";
-import { DocumentExporterSettingTab } from "@/settings/settings-tab";
+import { PageRendererSettingTab } from "@/settings/settings-tab";
 import { ExportModal, ExportModalResult } from "@/ui/ExportModal";
 import { ExportRunner } from "@/export/ExportRunner";
 import { runExport } from "@/runExport";
@@ -51,7 +51,7 @@ function isNotebookNavigatorMenus(value: unknown): value is NotebookNavigatorMen
 	);
 }
 
-export default class DocumentExporterPlugin extends Plugin {
+export default class PageRendererPlugin extends Plugin {
 	settings!: ExportSettings;
 
 	async onload() {
@@ -105,7 +105,7 @@ export default class DocumentExporterPlugin extends Plugin {
 
 		this.registerCliCommand();
 
-		this.addSettingTab(new DocumentExporterSettingTab(this.app, this));
+		this.addSettingTab(new PageRendererSettingTab(this.app, this));
 	}
 
 	onunload() {}
@@ -123,7 +123,7 @@ export default class DocumentExporterPlugin extends Plugin {
 				(params) => runCliExport(this.app, this.settings, params),
 			);
 		} catch (err) {
-			console.error("Document Exporter: failed to register CLI command", err);
+			console.error("Page Renderer: failed to register CLI command", err);
 		}
 	}
 
