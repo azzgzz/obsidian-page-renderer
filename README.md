@@ -14,7 +14,7 @@ Export single notes, entire folders, or hand-picked files to Markdown with rende
 
 ## Installation
 
-Search "Page Renderer" in **Settings → Community plugins → Browse** and click Install.
+Search "Page Renderer" in **Settings → Community plugins → Browse** and click Install (the plugin is not published yet).
 
 ### Manual installation
 
