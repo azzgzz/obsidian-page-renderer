@@ -12,6 +12,22 @@ Export single notes, entire folders, or hand-picked files to Markdown with rende
 - **Attachments** — one `.md` file per source note plus a shared `assets/` directory, with attachments copied and links rewritten
 - **Progress bar with cancel** — visual progress indicator for every export, with a cancel button that preserves already-exported files
 
+## Installation
+
+Search "Page Renderer" in **Settings → Community plugins → Browse** and click Install.
+
+### Manual installation
+
+Copy `main.js`, `manifest.json`, and `styles.css` into your vault's `.obsidian/plugins/page-md-renderer/` directory.
+
+## Quick start
+
+1. Install the plugin (see [Installation](#installation)) and enable it in **Settings → Community plugins**.
+2. Open any note.
+3. Click the export icon in the left sidebar.
+4. Click **Next**, then **Export**.
+5. Find the result in the `exports` folder of your vault: `<note name>.md`, plus `assets/` if the note has images.
+
 ## Usage
 
 Multiple ways to start an export:
@@ -23,13 +39,15 @@ Multiple ways to start an export:
 | Right-click a folder | File explorer → right-click a folder → "Export this folder" |
 | Right-click in editor | Right-click inside a note → "azz-export" |
 | Command palette | `Cmd/Ctrl+P` → "Export documents" |
+| Notebook Navigator | Right-click a note or folder → "Export this file" / "Export this folder" (if the Notebook Navigator plugin is installed) |
 
 ### Export dialog
 
 1. Choose **source** — current file, folder, or selected files
-2. Set **output folder** — type a path, click **Vault** to pick from vault folders, or **Choose folder** to select a system folder (desktop only)
-3. Set **file name** (single file) or **folder name** (batch export) — defaults to the source file or folder name
-4. Click **Next** → review the summary → click **Export**
+2. For the **Folder** source, type the folder path or click **Browse** to pick it
+3. Set **output folder** — type a path, click **Vault** to pick from vault folders, or **Choose folder** to select a system folder (desktop only)
+4. Set **file name** (single file) or **folder name** (batch export) — defaults to the note name, the source folder name, or `files` for selected files
+5. Click **Next** → review the summary → click **Export**
 
 A progress bar appears during export showing the current step or file. Click **Cancel** to stop; already-exported files are kept.
 
@@ -86,7 +104,7 @@ Open **Settings → Page Renderer**. All settings are indexed and searchable fro
 | Include source path comments | Add an HTML comment with the source note's path under the title | Off |
 | Include properties | Keep the note's properties (YAML frontmatter) at the top of the exported file; notes without properties get none | On |
 | Copy attachments | Copy referenced images and files into the export | On |
-| Overwrite existing exports | Replace existing export files when enabled. When disabled and the destination already exists, the export uses a new timestamped folder for its documents, attachments and report. "Destination" means the selected root for a single note and the batch leaf for folder/selected-file exports — including an existing empty destination. No source folder or previous export is moved or changed; only the new export's destination changes. | Off |
+| Overwrite existing exports | Replace files of a previous export. When off, an export to an already existing destination goes into a new timestamped folder and nothing from earlier exports is changed | Off |
 
 ## Rendering
 
@@ -111,22 +129,9 @@ Open **Settings → Page Renderer**. All settings are indexed and searchable fro
 
 All processing happens locally. The only network activity is fetching remote resources referenced by the note itself during export rendering (for example `http(s)` images); exported documents keep those references, so a browser or reader opening them may load the same resources. No telemetry is collected and no document content is sent to any external service.
 
-## Installation
+## Contributing
 
-Search "Page Renderer" in **Settings → Community plugins → Browse** and click Install.
-
-### Manual installation
-
-Copy `main.js`, `manifest.json`, and `styles.css` into your vault's `.obsidian/plugins/page-md-renderer/` directory.
-
-## Development
-
-```bash
-npm install
-npm run dev      # watch mode
-npm run build    # production build
-npm test         # run tests
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the development setup and pull request guidelines.
 
 ## License
 
