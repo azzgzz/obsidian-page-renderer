@@ -1,5 +1,5 @@
-import { Plugin, TFile, TFolder, Menu, MenuItem } from "obsidian";
-import type { CliFlags, CliHandler } from "obsidian";
+import { Plugin, Menu, MenuItem } from "obsidian";
+import type { CliFlags, CliHandler, TAbstractFile, TFile, TFolder } from "obsidian";
 import { ExportSettings } from "@/types";
 import { loadSettings, saveSettings } from "@/settings/settings";
 import { PageRendererSettingTab } from "@/settings/settings-tab";
@@ -10,6 +10,7 @@ import { ProgressNotice } from "@/ui/ProgressNotice";
 import { createProgressCallbacks } from "@/ui/exportProgress";
 import { exportResultMessage } from "@/ui/ExportResultMessage";
 import { CLI_COMMAND, CLI_DESCRIPTION, CLI_FLAGS, runCliExport } from "@/cli/CliExport";
+import { isFolder, isMarkdown } from "@/export/utils";
 
 type NotebookNavigatorMenus = {
 	registerFileMenu?: (callback: (context: NotebookNavigatorFileContext) => void) => () => void;
@@ -42,6 +43,11 @@ type AppWithPluginRegistry = typeof Plugin.prototype.app & {
 	};
 };
 
+// Values from third-party plugin APIs are untyped; only objects can be file-like.
+function asAbstractFile(value: unknown): TAbstractFile | null {
+	return value !== null && typeof value === "object" ? (value as TAbstractFile) : null;
+}
+
 function isNotebookNavigatorMenus(value: unknown): value is NotebookNavigatorMenus {
 	if (!value || typeof value !== "object") return false;
 	const menus = value as NotebookNavigatorMenus;
@@ -72,14 +78,14 @@ export default class PageRendererPlugin extends Plugin {
 		// File explorer context menu — right-click on file
 		this.registerEvent(
 			this.app.workspace.on("file-menu", (menu: Menu, file) => {
-				if (file instanceof TFile && file.extension === "md") {
+				if (isMarkdown(file)) {
 					menu.addItem((item) => {
 						item.setTitle("Export this file")
 							.setIcon("file-output")
 							.onClick(() => this.openExportModal(file, undefined));
 					});
 				}
-				if (file instanceof TFolder) {
+				if (isFolder(file)) {
 					menu.addItem((item) => {
 						item.setTitle("Export this folder")
 							.setIcon("file-output")
@@ -93,7 +99,7 @@ export default class PageRendererPlugin extends Plugin {
 		this.registerEvent(
 			this.app.workspace.on("editor-menu", (menu: Menu) => {
 				menu.addItem((item) => {
-					item.setTitle("azz-export")
+					item.setTitle("Export this file")
 						.setIcon("file-output")
 						.onClick(() => this.openExportModal());
 				});
@@ -134,8 +140,8 @@ export default class PageRendererPlugin extends Plugin {
 		if (typeof nnMenus.registerFileMenu === "function") {
 			const dispose = nnMenus.registerFileMenu((context) => {
 				if (context.selection?.mode !== "single") return;
-				const file = context.file;
-				if (!(file instanceof TFile) || file.extension !== "md") return;
+				const file = asAbstractFile(context.file);
+				if (!isMarkdown(file)) return;
 				context.addItem((item) => {
 					item.setTitle("Export this file")
 						.setIcon("file-output")
@@ -147,8 +153,8 @@ export default class PageRendererPlugin extends Plugin {
 
 		if (typeof nnMenus.registerFolderMenu === "function") {
 			const dispose = nnMenus.registerFolderMenu((context) => {
-				const folder = context.folder;
-				if (!(folder instanceof TFolder)) return;
+				const folder = asAbstractFile(context.folder);
+				if (!isFolder(folder)) return;
 				context.addItem((item) => {
 					item.setTitle("Export this folder")
 						.setIcon("file-output")

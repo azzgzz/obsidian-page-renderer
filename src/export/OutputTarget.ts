@@ -1,5 +1,5 @@
 import { App, Platform, TFile } from "obsidian";
-import { isExternalPath } from "@/export/utils";
+import { isExternalPath, isFile } from "@/export/utils";
 
 /** Where an export writes its files: the vault, the file system or memory. */
 export interface OutputTarget {
@@ -29,7 +29,7 @@ export function createOutputTarget(
 
 async function readVaultBinary(app: App, sourcePath: string): Promise<ArrayBuffer> {
 	const sourceFile = app.vault.getAbstractFileByPath(sourcePath);
-	if (!(sourceFile instanceof TFile)) {
+	if (!isFile(sourceFile)) {
 		throw new Error(`Attachment source not found: ${sourcePath}`);
 	}
 	return app.vault.readBinary(sourceFile);
@@ -87,7 +87,7 @@ export class VaultTarget implements OutputTarget {
 	private existingFile(filePath: string): TFile | null {
 		const existing = this.app.vault.getAbstractFileByPath(filePath);
 		if (!existing) return null;
-		if (!this.overwriteExisting || !(existing instanceof TFile)) {
+		if (!this.overwriteExisting || !isFile(existing)) {
 			throw new Error(`Output already exists: ${filePath}`);
 		}
 		return existing;

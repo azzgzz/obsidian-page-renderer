@@ -24,7 +24,7 @@ const SETTINGS: SettingSpec[] = [
 		name: "Output folder",
 		desc: "Exported files will be saved here (relative to vault root). You can change this path to any folder in your vault.",
 		aliases: ["directory", "destination", "save location", "export path"],
-		placeholder: "Exports",
+		placeholder: "exports",
 	},
 	{
 		key: "expandEmbeds",

@@ -32,7 +32,7 @@ describe("PageRendererSettingTab#getSettingDefinitions", () => {
 		expect(first.name).toBe("Output folder");
 		expect(first.control.type).toBe("text");
 		expect(first.control.key).toBe("defaultOutputFolder");
-		expect(first.control.placeholder).toBe("Exports");
+		expect(first.control.placeholder).toBe("exports");
 	});
 
 	it("groups the advanced toggles under one heading", () => {

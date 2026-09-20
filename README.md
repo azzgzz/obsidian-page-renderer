@@ -37,7 +37,7 @@ Multiple ways to start an export:
 | Sidebar icon | Click the export icon in the left sidebar |
 | Right-click a file | File explorer → right-click a Markdown file → "Export this file" |
 | Right-click a folder | File explorer → right-click a folder → "Export this folder" |
-| Right-click in editor | Right-click inside a note → "azz-export" |
+| Right-click in editor | Right-click inside a note → "Export this file" |
 | Command palette | `Cmd/Ctrl+P` → "Export documents" |
 | Notebook Navigator | Right-click a note or folder → "Export this file" / "Export this folder" (if the Notebook Navigator plugin is installed) |
 
@@ -55,7 +55,7 @@ A progress bar appears during export showing the current step or file. Click **C
 
 ### Export the current note
 
-1. Open a note → right-click → **azz-export**
+1. Open a note → right-click → **Export this file**
 2. Click **Next** → **Export**
 3. Result: `exports/<filename>.md` + `assets/` (if images exist)
 
