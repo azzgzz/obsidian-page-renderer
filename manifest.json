@@ -1,0 +1,10 @@
+{
+	"id": "azz-page-export",
+	"name": "Azz Page Exporter",
+	"version": "1.0.0",
+	"minAppVersion": "1.4.0",
+	"description": "Export notes, folders, and selected Markdown files to Markdown with rendered Dataview and Tasks query results.",
+	"author": "AzzGzz",
+	"authorUrl": "https://github.com/azzgzz",
+	"isDesktopOnly": false
+}

@@ -1,0 +1,162 @@
+import { Notice } from "obsidian";
+
+const PROGRESS_BAR_CLASS = "de-progress-bar";
+const PROGRESS_FILL_CLASS = "de-progress-fill";
+const PROGRESS_PCT_CLASS = "de-progress-pct";
+const PROGRESS_TITLE_CLASS = "de-progress-title";
+const PROGRESS_PHASE_CLASS = "de-progress-phase";
+const PROGRESS_CANCEL_CLASS = "de-progress-cancel";
+
+const WARNING_SHOWN_LIMIT = 2;
+const WARNING_MAX_LENGTH = 48;
+
+/**
+ * Compact one-line summary of export warnings for the completion notice, so
+ * the author sees what happened without opening export-report.md.
+ */
+export function summarizeWarnings(warnings: string[], shown = WARNING_SHOWN_LIMIT): string {
+	if (warnings.length === 0) return "";
+	const truncate = (w: string) =>
+		w.length > WARNING_MAX_LENGTH ? `${w.slice(0, WARNING_MAX_LENGTH)}…` : w;
+	const parts = warnings.slice(0, shown).map(truncate);
+	const rest = warnings.length - parts.length;
+	if (rest > 0) parts.push(`+${rest} more`);
+	return `${parts.join("; ")} (see export-report.md)`;
+}
+
+export class ProgressNotice {
+	private notice: Notice | null = null;
+	private title = "";
+	private count = 0;
+	private total = 0;
+	private phase = "";
+	onCancel: (() => void) | null = null;
+
+	private titleEl: HTMLElement | null = null;
+	private fillEl: HTMLElement | null = null;
+	private pctEl: HTMLElement | null = null;
+	private phaseEl: HTMLElement | null = null;
+
+	constructor(title: string) {
+		this.title = title;
+	}
+
+	start(total: number): void {
+		this.total = total;
+		this.count = 0;
+		this.phase = "";
+		this.show();
+	}
+
+	setTitle(title: string): void {
+		this.title = title;
+		if (this.titleEl) this.titleEl.textContent = title;
+	}
+
+	setProgress(current: number, total: number): void {
+		this.count = current;
+		this.total = total;
+		this.updateBar();
+	}
+
+	setPhase(phase: string): void {
+		this.phase = phase;
+		if (this.phaseEl) this.phaseEl.textContent = phase;
+	}
+
+	increment(): void {
+		this.count++;
+		this.updateBar();
+	}
+
+	finish(finalMessage: string): void {
+		this.notice?.hide();
+		this.notice = null;
+		this.titleEl = null;
+		this.fillEl = null;
+		this.pctEl = null;
+		this.phaseEl = null;
+		new Notice(finalMessage, 5000);
+		this.notifyWhenUnfocused(finalMessage);
+	}
+
+	private notifyWhenUnfocused(message: string): void {
+		if (typeof activeDocument === "undefined" || activeDocument.hasFocus()) return;
+
+		try {
+			if (this.notifyViaWebNotification(message)) return;
+			this.notifyViaElectron(message);
+		} catch {
+			// Native notifications are best-effort; the in-app Notice above is the fallback.
+		}
+	}
+
+	private notifyViaWebNotification(message: string): boolean {
+		const notifier = typeof window !== "undefined" ? window.Notification : undefined;
+		if (!notifier || notifier.permission !== "granted") return false;
+		new notifier("Document Exporter", { body: message });
+		return true;
+	}
+
+	private notifyViaElectron(message: string): void {
+		const desktopWindow = window as Window & {
+			electron?: unknown;
+			require?: (moduleId: string) => unknown;
+		};
+		const electron = desktopWindow.electron ?? desktopWindow.require?.("electron");
+		if (!electron || typeof electron !== "object") return;
+
+		const remote = (electron as { remote?: unknown }).remote;
+		if (!remote || typeof remote !== "object") return;
+
+		const NotificationCtor = (remote as { Notification?: unknown }).Notification;
+		if (typeof NotificationCtor !== "function") return;
+
+		const notification = new (NotificationCtor as new (options: { title: string; body: string }) => { show?: () => void })({
+			title: "Document Exporter",
+			body: message,
+		});
+		notification.show?.();
+	}
+
+	private show(): void {
+		if (this.notice) {
+			this.notice.hide();
+		}
+		this.notice = new Notice("", 0);
+		const noticeEl = (this.notice as unknown as { noticeEl: HTMLElement }).noticeEl;
+		noticeEl.empty();
+		noticeEl.classList.add("de-progress-notice");
+
+		const content = noticeEl.createDiv({ cls: "de-progress-content" });
+
+		this.titleEl = content.createDiv({ cls: PROGRESS_TITLE_CLASS, text: this.title });
+
+		const barContainer = content.createDiv({ cls: PROGRESS_BAR_CLASS });
+		this.fillEl = barContainer.createDiv({ cls: PROGRESS_FILL_CLASS });
+		this.pctEl = barContainer.createDiv({ cls: PROGRESS_PCT_CLASS, text: "0%" });
+
+		const bottomRow = content.createDiv({ cls: PROGRESS_PHASE_CLASS });
+		this.phaseEl = bottomRow.createSpan({ text: this.phase });
+
+		const cancelBtn = bottomRow.createEl("button", {
+			text: "Cancel",
+			cls: PROGRESS_CANCEL_CLASS,
+		});
+		cancelBtn.addEventListener("click", (e) => {
+			e.stopPropagation();
+			this.onCancel?.();
+			cancelBtn.disabled = true;
+			cancelBtn.textContent = "Cancelling...";
+		});
+
+		this.updateBar();
+	}
+
+	private updateBar(): void {
+		if (!this.fillEl || !this.pctEl) return;
+		const pct = this.total > 0 ? Math.round((this.count / this.total) * 100) : 0;
+		this.fillEl.style.width = `${pct}%`;
+		this.pctEl.textContent = `${pct}%`;
+	}
+}

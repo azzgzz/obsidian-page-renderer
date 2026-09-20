@@ -1,0 +1,8 @@
+.DS_Store
+.worktrees/
+node_modules/
+main.js
+main.js.map
+.claude/
+src/**/*.js
+data.json
