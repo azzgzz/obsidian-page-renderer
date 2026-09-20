@@ -1,0 +1,25 @@
+README.md
+  s_2ed28445128d98::t_aa170b6896ca94 1
+  s_2ed28445128d98::t_bc19364b5fce81 80
+  s_2ed28445128d98::t_d5dfb65c3e519c 116,120
+CONTRIBUTING.md
+  s_2ed28445128d98::t_4cc18cb2edf6af 1,8-9,27-37,43
+manifest.json
+  s_2ed28445128d98::t_99ee0a4340b4f2 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "98b34e81c86e2ac9bf3d614c052b60d52c78485c",
+  "prompts": {},
+  "sessions": {
+    "s_2ed28445128d98": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "30dfa585-735b-4a25-95a8-c06ce659cb69",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    }
+  }
+}
