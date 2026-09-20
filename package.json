@@ -1,5 +1,5 @@
 {
-  "name": "azz-page-export",
+  "name": "page-md-renderer",
   "version": "1.0.0",
   "description": "Export notes, folders, and selected Markdown files to Markdown with rendered Dataview and Tasks query results.",
   "main": "main.js",

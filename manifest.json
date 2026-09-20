@@ -1,5 +1,5 @@
 {
-	"id": "azz-page-export",
+	"id": "page-md-renderer",
 	"name": "Page Renderer",
 	"version": "1.0.0",
 	"minAppVersion": "1.4.0",

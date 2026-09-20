@@ -4,7 +4,7 @@ import { MemoryTarget } from "@/export/OutputTarget";
 import { runExport } from "@/runExport";
 import { exportResultMessage } from "@/ui/ExportResultMessage";
 
-export const CLI_COMMAND = "azz-export";
+export const CLI_COMMAND = "page-md-renderer";
 export const CLI_DESCRIPTION = "Export a note to Markdown with rendered query results (default: print to stdout)";
 
 export const CLI_FLAGS: CliFlags = {

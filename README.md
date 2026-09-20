@@ -77,14 +77,14 @@ A progress bar appears during export showing the current step or file. Click **C
 With Obsidian 1.12.2+ and **Settings → General → Command line interface** enabled, a note can be exported from the terminal (Obsidian must be running):
 
 ```bash
-obsidian azz-export file="$VAULT/note.md"
+obsidian page-md-renderer file="$VAULT/note.md"
 ```
 
-By default the command prints the exported Markdown to stdout and creates no files, so it can be redirected: `obsidian azz-export file="$VAULT/note.md" > note.md`. Attachments (images) are not copied in this mode; links to them keep pointing at `assets/...`.
+By default the command prints the exported Markdown to stdout and creates no files, so it can be redirected: `obsidian page-md-renderer file="$VAULT/note.md" > note.md`. Attachments (images) are not copied in this mode; links to them keep pointing at `assets/...`.
 
 With `printToFile=true` it writes the document (plus `assets/`) into the output folder from the plugin settings (`exports` by default), replaces previous output, and prints a short summary with the created paths.
 
-Parameters are passed as `key=value` (`--file` is not supported). To target a specific vault, add `vault=<name>` before the command: `obsidian vault=MyVault azz-export file="..."`.
+Parameters are passed as `key=value` (`--file` is not supported). To target a specific vault, add `vault=<name>` before the command: `obsidian vault=MyVault page-md-renderer file="..."`.
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
