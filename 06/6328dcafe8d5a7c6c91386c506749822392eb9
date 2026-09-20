@@ -1,0 +1,19 @@
+README.md
+  s_2ed28445128d98::t_419851a573dbf9 23-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "066328dcafe8d5a7c6c91386c506749822392eb9",
+  "prompts": {},
+  "sessions": {
+    "s_2ed28445128d98": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "30dfa585-735b-4a25-95a8-c06ce659cb69",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    }
+  }
+}
