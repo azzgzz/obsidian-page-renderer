@@ -1,0 +1,33 @@
+styles.css
+  s_2ed28445128d98::t_a9db772edf6892 76,80,85,94,103,111,121,129,138,150,154
+src/settings/settings-tab.ts
+  s_2ed28445128d98::t_31fd7305e46642 4,72-73,80
+src/settings/settings-tab.test.ts
+  s_2ed28445128d98::t_31fd7305e46642 2,22,25,70
+src/ui/ExportModal.ts
+  s_2ed28445128d98::t_31fd7305e46642 255
+src/main.ts
+  s_2ed28445128d98::t_31fd7305e46642 5,54,108,126
+src/ui/ProgressNotice.test.ts
+  s_2ed28445128d98::t_a9db772edf6892 73,80-82,89,97,105,113,182,189
+  s_2ed28445128d98::t_31fd7305e46642 142,172
+src/ui/ProgressNotice.ts
+  s_2ed28445128d98::t_a9db772edf6892 3-8,129,131
+  s_2ed28445128d98::t_31fd7305e46642 97,116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6f48ebcc73fde7caea7027fc64974ae5b08e5ed6",
+  "prompts": {},
+  "sessions": {
+    "s_2ed28445128d98": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "30dfa585-735b-4a25-95a8-c06ce659cb69",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    }
+  }
+}
