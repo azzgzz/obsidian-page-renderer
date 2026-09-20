@@ -1,0 +1,238 @@
+LICENSE
+  h_2f8b1e15bb1c81 1-22
+package.json
+  h_2f8b1e15bb1c81 1-38
+manifest.json
+  h_2f8b1e15bb1c81 1-10
+CLAUDE.md
+  s_050e192fab70c5::t_ffc040465092cf 1-89
+README.md
+  s_050e192fab70c5::t_30b173b7ab5fca 1-133
+eslint.config.mts
+  s_8fe1e85024de49::t_e29114ba3b2cbd 1-40
+package-lock.json
+  s_050e192fab70c5::t_b1518a244db656 1-7315
+review-2026-09-20.md
+  s_01ccb26b6b61ae::t_3741c3d90e590f 1-501
+src/__mocks__/obsidian.ts
+  s_050e192fab70c5::t_131f40070a1725 1-56
+src/cli/CliExport.test.ts
+  s_050e192fab70c5::t_7462a332c8af14 1-152
+src/cli/CliExport.ts
+  s_050e192fab70c5::t_253f6270331322 1-138
+src/export/AttachmentCollector.ts
+  s_050e192fab70c5::t_161ee03b862615 1-171
+src/export/DocumentAssembler.test.ts
+  s_050e192fab70c5::t_ee3cd89725eec3 1-291
+src/export/DocumentAssembler.ts
+  s_050e192fab70c5::t_c7b0ff1851f076 1-129
+src/export/EmbedExpander.ts
+  s_050e192fab70c5::t_165e756d940c27 1-174
+src/export/ExportIntegrity.test.ts
+  s_050e192fab70c5::t_adb27615aa9c2a 1-242
+src/export/ExportOutcome.test.ts
+  s_050e192fab70c5::t_2b68bc8dc18468 1-246
+src/export/ExportPlan.test.ts
+  s_050e192fab70c5::t_1e6f38eb8d9df9 1-189
+src/export/ExportPlan.ts
+  s_050e192fab70c5::t_4063e66ce17904 1-135
+src/export/ExportReport.test.ts
+  s_050e192fab70c5::t_5c5370619c5a5f 1-87
+src/export/ExportReport.ts
+  s_050e192fab70c5::t_35ad6dc62e7723 1-82
+src/export/ExportRunner.test.ts
+  s_050e192fab70c5::t_315897e3676734 1-726
+src/export/ExportRunner.ts
+  s_050e192fab70c5::t_984ca2fc272e51 1-408
+src/export/ExportSourceResolver.test.ts
+  s_050e192fab70c5::t_c627b57b8db20f 1-187
+src/export/ExportSourceResolver.ts
+  s_050e192fab70c5::t_af8d37bab7b6f2 1-52
+src/export/FragmentJoiner.test.ts
+  s_050e192fab70c5::t_83a1edd9f9d523 1-155
+src/export/FragmentJoiner.ts
+  s_050e192fab70c5::t_60ede3c3cc2f6c 1-126
+src/export/HtmlToMarkdown.test.ts
+  s_8a41be4f615b05::t_d3da77d85a38d4 1-141
+src/export/HtmlToMarkdown.ts
+  s_8a41be4f615b05::t_4e1eeb42680799 1-279
+src/export/LinkRewriter.test.ts
+  s_8fe1e85024de49::t_f1175dca146279 1-342
+src/export/LinkRewriter.ts
+  s_050e192fab70c5::t_46830a018becd2 1-262
+src/export/MarkdownRendered.test.ts
+  s_050e192fab70c5::t_360aec0e87963b 1-198
+src/export/OutputTarget.test.ts
+  s_050e192fab70c5::t_2a141c3569d388 1-296
+src/export/OutputTarget.ts
+  s_050e192fab70c5::t_db9e24eb89d067 1-187
+src/export/QueryBlockResolver.test.ts
+  s_8a41be4f615b05::t_0b379972cb677c 1-165
+src/export/QueryBlockResolver.ts
+  s_050e192fab70c5::t_b7bd60d53764d9 1-211
+src/export/ReleaseArtifacts.test.ts
+  s_050e192fab70c5::t_b03c2b42783d5d 1-339
+src/export/composeOutput.test.ts
+  s_050e192fab70c5::t_cf342cdd679a01 1-36
+src/export/composeOutput.ts
+  s_050e192fab70c5::t_277987e1744597 1-43
+src/export/native-renderer.dom.test.ts
+  s_050e192fab70c5::t_2ef39dceefa2b1 1-40
+src/export/native-renderer.ts
+  s_050e192fab70c5::t_f1eaefdad66a5f 1-95
+src/export/utils.test.ts
+  s_050e192fab70c5::t_38222e7da8c815 1-177
+src/export/utils.ts
+  s_050e192fab70c5::t_b4f4f0ce9036d1 1-126
+src/main.ts
+  s_050e192fab70c5::t_bda8e68d88ca57 1-225
+src/runExport.test.ts
+  s_050e192fab70c5::t_74f8df12bc9e34 1-68
+src/runExport.ts
+  s_050e192fab70c5::t_058a826a6bc8b7 1-53
+src/settings/settings-tab.test.ts
+  s_050e192fab70c5::t_8f3d099b019a23 1-114
+src/settings/settings-tab.ts
+  s_050e192fab70c5::t_14efd0ccb15045 1-155
+src/settings/settings.test.ts
+  s_8fe1e85024de49::t_78f2e22a933543 1-46
+src/settings/settings.ts
+  s_050e192fab70c5::t_9abccf5abebe2c 1-20
+src/test-support/clock.ts
+  s_050e192fab70c5::t_58c76d85b2c707 1-10
+src/test-support/memory-vault.ts
+  s_8a41be4f615b05::t_ec7870e59b9234 1-238
+src/types.test.ts
+  s_8fe1e85024de49::t_1fee790bdf62a4 1-12
+src/types.ts
+  s_050e192fab70c5::t_23ee1e0f5e9f62 1-58
+src/ui/ExportModal.ts
+  s_050e192fab70c5::t_6a87a6a4ea208a 1-326
+src/ui/ExportResultMessage.test.ts
+  s_050e192fab70c5::t_f0cce66e9dec6e 1-113
+src/ui/ExportResultMessage.ts
+  s_050e192fab70c5::t_f44e84b0154b54 1-26
+src/ui/FilePickerModal.ts
+  s_050e192fab70c5::t_7febaa41e58c4d 1-71
+src/ui/FolderPickerModal.ts
+  s_050e192fab70c5::t_babf5d1e2ea530 1-26
+src/ui/exportProgress.test.ts
+  s_050e192fab70c5::t_9388be318b634c 1-47
+src/ui/exportProgress.ts
+  s_050e192fab70c5::t_218ecdf980b77d 1-36
+src/ui/systemFolderPicker.ts
+  s_050e192fab70c5::t_a534ac45c9262a 1-22
+styles.css
+  s_050e192fab70c5::t_72da15db4004a7 1-157
+.github/workflows/ci.yml
+  h_2f8b1e15bb1c81 1-26
+.github/workflows/release.yml
+  h_2f8b1e15bb1c81 1-64
+.gitignore
+  h_2f8b1e15bb1c81 1-8
+CONTRIBUTING.md
+  h_2f8b1e15bb1c81 1-47
+docs/archives/2026-05-10-document-exporter-development-plan.md
+  h_2f8b1e15bb1c81 1-671
+docs/archives/superpowers/plans/2026-07-29-export-reliability-hardening.md
+  h_2f8b1e15bb1c81 1-1746
+docs/archives/superpowers/plans/2026-08-20-declarative-settings.md
+  h_2f8b1e15bb1c81 1-558
+docs/archives/superpowers/plans/2026-08-20-embed-expansion.md
+  h_2f8b1e15bb1c81 1-1012
+docs/archives/superpowers/plans/2026-08-20-epub-export.md
+  h_2f8b1e15bb1c81 1-958
+docs/archives/superpowers/plans/2026-08-24-attachment-embed-block-boundaries.md
+  h_2f8b1e15bb1c81 1-410
+docs/archives/superpowers/plans/2026-08-24-note-transclusion-block-boundaries.md
+  h_2f8b1e15bb1c81 1-686
+docs/archives/superpowers/plans/2026-08-26-issue-76-pipeline-fix.md
+  h_2f8b1e15bb1c81 1-449
+docs/archives/superpowers/specs/2026-08-24-attachment-embed-block-boundaries-design.md
+  h_2f8b1e15bb1c81 1-186
+docs/archives/superpowers/specs/2026-08-24-note-transclusion-block-boundaries-design.md
+  h_2f8b1e15bb1c81 1-241
+docs/archives/superpowers/specs/2026-08-26-issue-76-pipeline-fix-design.md
+  h_2f8b1e15bb1c81 1-140
+docs/releases/1.0.0/readiness.md
+  h_2f8b1e15bb1c81 1-19
+docs/releases/1.0.0/release-notes.md
+  h_2f8b1e15bb1c81 1-32
+docs/superpowers/plans/2026-09-12-1.0.0-acceptance-protocol.md
+  h_2f8b1e15bb1c81 1-426
+docs/superpowers/plans/2026-09-12-1.0.0-release-readiness.md
+  h_2f8b1e15bb1c81 1-647
+esbuild.config.mjs
+  h_2f8b1e15bb1c81 1-39
+scripts/check-version.mjs
+  h_2f8b1e15bb1c81 1-35
+scripts/check-version.test.mjs
+  h_2f8b1e15bb1c81 1-111
+scripts/create-release-fixtures.mjs
+  h_2f8b1e15bb1c81 1-111
+src/export/AttachmentCollector.test.ts
+  h_2f8b1e15bb1c81 1-291
+src/export/EmbedExpander.test.ts
+  h_2f8b1e15bb1c81 1-260
+src/export/ExportOutcome.ts
+  h_2f8b1e15bb1c81 1-25
+src/ui/ExportModal.test.ts
+  h_2f8b1e15bb1c81 1-14
+src/ui/ProgressNotice.test.ts
+  h_2f8b1e15bb1c81 1-220
+src/ui/ProgressNotice.ts
+  h_2f8b1e15bb1c81 1-162
+tsconfig.json
+  h_2f8b1e15bb1c81 1-21
+version-bump.mjs
+  h_2f8b1e15bb1c81 1-12
+versions.json
+  h_2f8b1e15bb1c81 1-26
+vitest.config.ts
+  h_2f8b1e15bb1c81 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "7b2a13decebea3e62711ebdf91f250b5a139ff1b",
+  "prompts": {},
+  "humans": {
+    "h_2f8b1e15bb1c81": {
+      "author": "Azamat Iskandarov <azamat@mts.ru>"
+    }
+  },
+  "sessions": {
+    "s_01ccb26b6b61ae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "aecf49eb-eb20-4844-a7f0-f11ce07dcd28",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    },
+    "s_050e192fab70c5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d5b12e2e-2a04-4dc7-be7c-6a8e70b96f69",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    },
+    "s_8a41be4f615b05": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "adf38ea1-a5c0-4d91-a728-d21c8c48f7db",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    },
+    "s_8fe1e85024de49": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e0a52a3-6b11-4914-aa57-034bb62da216",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    }
+  }
+}
