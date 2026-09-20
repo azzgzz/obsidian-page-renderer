@@ -1,12 +1,12 @@
-# Contributing to Document Exporter
+# Contributing to Page Renderer
 
 Thanks for your interest in contributing!
 
 ## Development Setup
 
 ```bash
-git clone https://github.com/rogerdigital/document-exporter.git
-cd document-exporter
+git clone https://github.com/azzgzz/obsidian-page-renderer.git
+cd obsidian-page-renderer
 npm install
 npm run dev
 ```
@@ -24,12 +24,23 @@ npm run test:watch
 npm run build
 ```
 
+## Checks before a pull request
+
+CI runs the same checks:
+
+```bash
+npm run check:version         # version metadata is consistent
+npm run lint:obsidian-warnings
+npm run build                 # type check + production build
+npm test
+```
+
 ## Submitting Changes
 
 1. Fork the repo and create a feature branch from `main`
 2. Make your changes with clear, descriptive commits (conventional commits: `feat:`, `fix:`, `chore:`, `docs:`)
 3. Add tests for new functionality
-4. Ensure `npm run build` and `npm test` pass
+4. Ensure the checks above pass
 5. Open a pull request against `main`
 
 ## Reporting Issues

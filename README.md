@@ -1,4 +1,4 @@
-# Document Exporter
+# Page Renderer
 
 Export single notes, entire folders, or hand-picked files to Markdown with rendered `dataview`, `dataviewjs` and `tasks` query results. Supports batch export with directory structure preservation.
 
@@ -77,7 +77,7 @@ Parameters are passed as `key=value` (`--file` is not supported). To target a sp
 
 ## Settings
 
-Open **Settings → Document Exporter**. All settings are indexed and searchable from Obsidian's settings search (Obsidian 1.13+).
+Open **Settings → Page Renderer**. All settings are indexed and searchable from Obsidian's settings search (Obsidian 1.13+).
 
 | Setting | Description | Default |
 |---------|-------------|---------|
@@ -113,11 +113,11 @@ All processing happens locally. The only network activity is fetching remote res
 
 ## Installation
 
-Search "Document Exporter" in **Settings → Community plugins → Browse** and click Install.
+Search "Page Renderer" in **Settings → Community plugins → Browse** and click Install.
 
 ### Manual installation
 
-Copy `main.js`, `manifest.json`, and `styles.css` into your vault's `.obsidian/plugins/document-exporter/` directory.
+Copy `main.js`, `manifest.json`, and `styles.css` into your vault's `.obsidian/plugins/page-md-renderer/` directory.
 
 ## Development
 
