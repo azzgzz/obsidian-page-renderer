@@ -20,6 +20,19 @@ Search "Page Renderer" in **Settings → Community plugins → Browse** and clic
 
 Copy `main.js`, `manifest.json`, and `styles.css` into your vault's `.obsidian/plugins/page-md-renderer/` directory.
 
+### Local build
+
+To use the plugin without a published release, build it from source and copy the result into your vault:
+
+```bash
+npm install
+npm run build
+mkdir -p /path/to/vault/.obsidian/plugins/page-md-renderer
+cp main.js manifest.json styles.css /path/to/vault/.obsidian/plugins/page-md-renderer/
+```
+
+Then restart Obsidian (or reload the plugin) and enable **Page Renderer** in **Settings → Community plugins**. After a code change, repeat `npm run build` and the copy step.
+
 ## Quick start
 
 1. Install the plugin (see [Installation](#installation)) and enable it in **Settings → Community plugins**.
