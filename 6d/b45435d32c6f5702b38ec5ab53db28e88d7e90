@@ -1,0 +1,31 @@
+src/main.ts
+  s_2ed28445128d98::t_c2930748154c6d 143-144
+  s_2ed28445128d98::t_ac5350ed37eff6 156-157
+  s_2ed28445128d98::t_238998ec061226 1-2,13,46-50,81,88,102
+src/ui/ExportModal.ts
+  s_2ed28445128d98::t_d129510fa53b2c 225-226
+src/settings/settings-tab.test.ts
+  s_2ed28445128d98::t_65e8e3cc1fc809 35
+README.md
+  s_2ed28445128d98::t_90656f8ccd4fee 40,58
+src/export/OutputTarget.ts
+  s_2ed28445128d98::t_e679e5d4699d7b 2,32,90
+src/settings/settings-tab.ts
+  s_2ed28445128d98::t_a38b6db034f9a3 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6db45435d32c6f5702b38ec5ab53db28e88d7e90",
+  "prompts": {},
+  "sessions": {
+    "s_2ed28445128d98": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "30dfa585-735b-4a25-95a8-c06ce659cb69",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    }
+  }
+}
