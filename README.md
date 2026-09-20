@@ -93,18 +93,18 @@ With Obsidian 1.12.2+ and **Settings → General → Command line interface** en
 obsidian page-md-renderer file="$VAULT/note.md"
 ```
 
-By default the command prints the exported Markdown to stdout and creates no files, so it can be redirected: `obsidian page-md-renderer file="$VAULT/note.md" > note.md`. Attachments (images) are not copied in this mode; links to them keep pointing at `assets/...`.
+By default the command writes the document (plus `assets/`) into the output folder from the plugin settings (`exports` by default, created inside the vault), overwrites a file with the same name, and prints a short summary with the created paths. The exported file is named after the source note: `Projects/report.md` → `exports/report.md`.
 
-With `printToFile=true` it writes the document (plus `assets/`) into the output folder from the plugin settings (`exports` by default), replaces previous output, and prints a short summary with the created paths.
+With `printToFile=false` the command prints the exported Markdown to stdout and creates no files, so it can be redirected: `obsidian page-md-renderer file="$VAULT/note.md" printToFile=false > note.md`. Attachments (images) are not copied in this mode; links to them keep pointing at `assets/...`.
 
 Parameters are passed as `key=value` (`--file` is not supported). To target a specific vault, add `vault=<name>` before the command: `obsidian vault=MyVault page-md-renderer file="..."`.
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
 | `file` | Markdown note: absolute path or path inside the vault (required) | — |
-| `printToFile` | `true` writes files to the output folder; `false` prints the Markdown to stdout | `false` |
-| `output` | Output folder, vault-relative or absolute (only with `printToFile=true`) | Output folder from the plugin settings |
-| `overwrite` | `false` writes into a new timestamped folder instead of replacing output (only with `printToFile=true`) | `true` |
+| `printToFile` | `true` writes files to the output folder; `false` prints the Markdown to stdout | `true` |
+| `output` | Output folder, vault-relative or absolute (only when files are written) | Output folder from the plugin settings |
+| `overwrite` | `false` writes into a new timestamped folder instead of replacing output (only when files are written) | `true` |
 
 ## Settings
 

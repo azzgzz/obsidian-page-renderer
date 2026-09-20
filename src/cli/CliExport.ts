@@ -5,7 +5,7 @@ import { runExport } from "@/runExport";
 import { exportResultMessage } from "@/ui/ExportResultMessage";
 
 export const CLI_COMMAND = "page-md-renderer";
-export const CLI_DESCRIPTION = "Export a note to Markdown with rendered query results (default: print to stdout)";
+export const CLI_DESCRIPTION = "Export a note to Markdown with rendered query results (default: write files to the output folder)";
 
 export const CLI_FLAGS: CliFlags = {
 	file: {
@@ -15,15 +15,15 @@ export const CLI_FLAGS: CliFlags = {
 	},
 	printToFile: {
 		value: "<true|false>",
-		description: "Write files to the output folder instead of printing the Markdown to stdout (default: false)",
+		description: "Write files to the output folder; false prints the Markdown to stdout instead (default: true)",
 	},
 	output: {
 		value: "<folder>",
-		description: "Output folder with printToFile=true (default: the plugin's output folder setting)",
+		description: "Output folder when writing files (default: the plugin's output folder setting)",
 	},
 	overwrite: {
 		value: "<true|false>",
-		description: "Replace existing output with printToFile=true (default: true)",
+		description: "Replace existing output when writing files (default: true)",
 	},
 };
 
@@ -81,7 +81,7 @@ export function parseCliExport(
 		return { ok: false, error: `Not a Markdown note: ${rawFile}` };
 	}
 
-	const printToFile = params.printToFile?.trim().toLowerCase() === "true";
+	const printToFile = params.printToFile?.trim().toLowerCase() !== "false";
 
 	const rawOutput = params.output?.trim().replace(/\\/g, "/").replace(/\/+$/, "");
 	const outputFolder = rawOutput && rawOutput !== "true" ? rawOutput : defaultOutputFolder;

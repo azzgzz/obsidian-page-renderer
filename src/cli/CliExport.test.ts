@@ -45,28 +45,28 @@ describe("toVaultPath", () => {
 });
 
 describe("parseCliExport", () => {
-	it("applies defaults: plugin output folder, overwrite on, print to stdout", () => {
+	it("applies defaults: plugin output folder, overwrite on, write files", () => {
 		expect(parseCliExport({ file: `${BASE}/note.md` }, BASE, DEFAULT_OUT)).toEqual({
 			ok: true,
 			request: {
 				file: "note.md",
 				outputFolder: DEFAULT_OUT,
 				overwrite: true,
-				printToFile: false,
+				printToFile: true,
 			},
 		});
 	});
 
-	it("prints to stdout only when printToFile is explicitly true", () => {
+	it("prints to stdout only when printToFile is explicitly false", () => {
 		const printToFile = (value?: string) => parseCliExport(
 			{ file: "a.md", ...(value === undefined ? {} : { printToFile: value }) },
 			BASE,
 			DEFAULT_OUT,
 		);
-		expect(printToFile()).toMatchObject({ ok: true, request: { printToFile: false } });
-		expect(printToFile("false")).toMatchObject({ ok: true, request: { printToFile: false } });
+		expect(printToFile()).toMatchObject({ ok: true, request: { printToFile: true } });
 		expect(printToFile("true")).toMatchObject({ ok: true, request: { printToFile: true } });
-		expect(printToFile("TRUE")).toMatchObject({ ok: true, request: { printToFile: true } });
+		expect(printToFile("false")).toMatchObject({ ok: true, request: { printToFile: false } });
+		expect(printToFile(" FALSE ")).toMatchObject({ ok: true, request: { printToFile: false } });
 	});
 
 	it("uses an explicit output folder without trailing slashes", () => {
@@ -112,10 +112,12 @@ describe("runCliExport", () => {
 		return fixture;
 	}
 
-	it("prints the rendered Markdown by default and writes nothing", async () => {
+	it("prints the rendered Markdown with printToFile=false and writes nothing", async () => {
 		const fixture = vaultWith({ "Note.md": "# Note\n\nBody\n" });
 
-		const output = await runCliExport(fixture.app, DEFAULT_SETTINGS, { file: "Note.md" });
+		const output = await runCliExport(fixture.app, DEFAULT_SETTINGS, {
+			file: "Note.md", printToFile: "false",
+		});
 
 		expect(output).toBe("# Note\n\nBody\n\n");
 		expect(fixture.paths()).toEqual(["Note.md"]);
@@ -132,10 +134,20 @@ describe("runCliExport", () => {
 		const fixture = vaultWith({ "Note.md": "Body" });
 
 		const output = await runCliExport(fixture.app, DEFAULT_SETTINGS, {
-			file: "Note.md", output: "../escape", printToFile: "true",
+			file: "Note.md", output: "../escape",
 		});
 
 		expect(output).toMatch(/^Error: .*parent directory traversal/);
+	});
+
+	it("writes into the plugin output folder by default", async () => {
+		const fixture = vaultWith({ "Note.md": "Body" });
+
+		const output = await runCliExport(fixture.app, DEFAULT_SETTINGS, { file: "Note.md" });
+
+		expect(output).toContain("Export complete");
+		expect(output).toContain(`${DEFAULT_OUT}/Note.md`);
+		expect(fixture.text(`${DEFAULT_OUT}/Note.md`)).toContain("Body");
 	});
 
 	it("writes into the vault with printToFile=true and lists the output", async () => {
