@@ -1,0 +1,27 @@
+README.md
+  s_2ed28445128d98::t_217488c64247fa 80,83,87
+package.json
+  s_2ed28445128d98::t_217488c64247fa 2
+manifest.json
+  s_2ed28445128d98::t_217488c64247fa 2
+src/cli/CliExport.ts
+  s_2ed28445128d98::t_217488c64247fa 7
+package-lock.json
+  s_2ed28445128d98::t_3329222833b550 2,8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "90fd23c50df3c7677e09acb26eaae3e6be684a2c",
+  "prompts": {},
+  "sessions": {
+    "s_2ed28445128d98": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "30dfa585-735b-4a25-95a8-c06ce659cb69",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Azamat Iskandarov <azamat@mts.ru>"
+    }
+  }
+}
